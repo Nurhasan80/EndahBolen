@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Web dengan Efek Lipatan Kertas dan Klip</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            
+        }
+
+        .paper {
+            position: relative;
+            background-color: white;
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Efek lipatan */
+        
+
+        .paper h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .paper p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Efek klip */
+        .clip {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background-color: transparent;
+        }
+
+        .clip::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 45px;
+            background-color: #999;
+            border-radius: 8px 8px 0 0;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+        }
+        .judul {
+            text-align: center;
+        }
+
+       
+
+        /* Responsiveness */
+        @media (max-width: 600px) {
+            .paper {
+                width: 95%;
+                padding: 15px;
+            }
+
+            .paper h1 {
+                font-size: 20px;
+            }
+
+            .paper p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="paper">
+        <div class="clip"></div>
+        <h1 class="judul">Cara Pembelian</h1>
+        <P>1. Pembelian di Tab Order / Menu Order</P>
+        <p>
+            Klik tombol Add to Cart untuk memasukan belanjaan kedalam keranjang sesuai produk yang dibeli, maka jumlah dan item yang dibeli akan masuk ke keranjang belanja, kemudian apabila Anda sudah yakin dengan belanjaan yang dibeli lalu isi nama pembeli, alamat dan no hp. Kemudian tekan Check Out untuk membeli via WhatsApp penjual
+        </p>
+        
+
+        <p>2. Pembelian Custom, yaitu pembelian yang tidak tertera di Menu Order, Anda secara bebas memesan sesuai selera pesanan Anda yang tidak tersedia.</p>
+
+        <h1 class="judul">Cara Pembayaran dan Pengiriman</h1>
+        <p>Untuk pembayaran bisa langsung transfer antar Bank, barang akan di kirim melalui gojek atau sejenisnya apabila transferan sudah dikirm plus ongkir ditanggung pembeli</p>
+    </div>
+
+</body>
+</html>

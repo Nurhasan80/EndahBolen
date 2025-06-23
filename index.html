@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>:.ENDAH BOLEN.:</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap" rel="stylesheet">
+  <!-- End fonts  -->
+  
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <!-- End Feather icons  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- End Feather Icons -->
+
+  <!-- My Css -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="notif.css">
+  <!-- End My css  -->
+
+ 
+  <!-- Link Font Awesome untuk ikon WhatsApp -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>  
+  <!-- Navbar start -->
+  <nav class="navbar">
+    <a href="#" class="navbar-logo"><span>Endah</span> <span2>Bolen.</span2></a>
+   <!-- link Navbar -->
+    <div class="navbar-nav">
+      <a href="#home">Home</a>
+      <a href="#about">Tentang Kami</a>
+      <a href="#menu">Order</a>
+      <a href="#products">Produk</a>
+      <a href="#testimonial">Testimonial</a>
+      <a href="#contact">Kontak</a>
+    </div>
+    <!-- End link navbar  -->
+
+     <!-- Elemen pop-up keranjang -->
+     <div id="myPopup" class="popup">
+      <div class="popup-content">
+                    <button class="close-btn" onclick="closePopup()">X</button>
+        
+                    <div class="cart">
+                        <table id="cart-table">
+                            <thead>
+                                <tr bgcolor="grey">
+                                    <th>Gambar</th>
+                                    <th>Nama Barang</th>
+                                    <th>Harga</th>
+                                    <th>Jumlah</th>
+                                    <th>Total</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
+                            <td colspan="5">Keranjang Kosong</td>
+                            <tbody></tbody>
+                        </table>
+                        <div class="cart-total">
+                          
+                            Total Harga: Rp <span id="total-price">0</span>
+                        </div>
+                    </div>
+                
+                    
+                    <div class="checkout-form">
+                        <input type="text" id="name" placeholder="Nama Lengkap">
+                        <input type="number" id="phone" placeholder="Nomor Telepon">
+                        <input type="text" id="address" placeholder="Alamat">
+                        <button id="checkout-button" disabled onclick="checkout()">Check Out</button>
+                    </div>
+  </div>
+  </div>
+<!-- End Menu popUp keranjang -->
+
+
+<!-- Elemen pop-up Buy Now -->
+<!-- Popup Modal -->
+<div id="popupBolenCoklat" class="bolenCoklat">
+  <!-- Konten Popup -->
+   <!-- form pembelian coklat  -->
+  <div class="Content-bolenCoklat">
+      <span class="closeBolenCoklat">&times;</span>
+            
+    <h2>Form Pembelian Produk</h2>
+    <form id="orderForm">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required>
+
+        <label for="telepon">No Telepon:</label>
+        <input type="tel" id="telepon" name="telepon" required>
+        <label for="namaBarang">Nama Barang:</label>
+        <input type="text" id="namaBarang" name="namaBarang" value="Pisang Bolen Coklat" readonly>
+
+        <label for="jumlah">Jumlah Beli:</label>
+        <input type="number" id="jumlah" name="jumlah" min="1" value="1" required oninput="hitungTotal()">
+
+        <label for="totalHarga">Total Harga (Rp 40.000 per item):</label>
+        <input type="text" id="totalHarga" name="totalHarga" value="Rp 40.000" readonly>
+
+        <label for="alamat">Alamat Lengkap:</label>
+        <textarea id="alamat" name="alamat" rows="4" required></textarea>
+
+        <button class="BuyNow" type="button" onclick="checkoutWhatsApp()">Checkout via WhatsApp</button>
+    </form>
+    <!-- End form pembelian coklat  -->
+  </div>
+</div>
+
+ <!-- Form Pembelian keju -->
+<div id="popupBolenKeju" class="bolenKeju">
+  <!-- Konten Popup -->
+  <div class="Content-bolenKeju">
+      <span class="closeBolenKeju">&times;</span>
+            
+      <h2>Form Pembelian Produk</h2>
+      <form id="orderForm">
+      <label for="nama">Nama:</label>
+      <input type="text" id="nama2" name="nama" required>
+
+      <label for="telepon">No Telepon:</label>
+      <input type="tel" id="telepon2" name="telepon" required>
+      <label for="namaBarang">Nama Barang:</label>
+      <input type="text" id="namaBarang2" name="namaBarang" value="Pisang Bolen Keju" readonly>
+
+      <label for="jumlah">Jumlah Beli:</label>
+      <input type="number" id="jumlah2" name="jumlah" min="1" value="1" required oninput="hitungTotal2()">
+
+      <label for="totalHarga">Total Harga (Rp 40.000 per item):</label>
+      <input type="text" id="totalHarga2" name="totalHarga" value="Rp 40.000" readonly>
+
+      <label for="alamat">Alamat Lengkap:</label>
+      <textarea id="alamat2" name="alamat" rows="4" required></textarea>
+
+      <button class="BuyNow" type="button" onclick="checkoutWhatsApp2()">Checkout via WhatsApp</button>
+  </div>
+</div>                      
+   <!-- End form pembelian keju  -->            
+</div>         
+</div>
+
+     <!-- Form Pembelian Tape -->
+        <div id="popupBolenTape" class="bolenTape">
+          <!-- Konten Popup -->
+          <div class="Content-bolenTape">
+              <span class="closeBolenTape">&times;</span>
+    
+      <h2>Form Pembelian Produk</h2>
+      <form id="orderFormTape">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama3" name="nama" required>
+  
+        <label for="telepon">No Telepon:</label>
+        <input type="tel" id="telepon3" name="telepon" required>
+        <label for="namaBarang">Nama Barang:</label>
+        <input type="text" id="namaBarang3" name="namaBarang" value= "Bolen Tape" readonly>
+  
+        <label for="jumlah">Jumlah Beli:</label>
+        <input type="number" id="jumlah3" name="jumlah" min="1" value="1" required oninput="hitungTotal3()">
+  
+        <label for="totalHarga">Total Harga (Rp 40.000 per item):</label>
+        <input type="text" id="totalHarga3" name="totalHarga" value="Rp 40.000" readonly>
+  
+        <label for="alamat">Alamat Lengkap:</label>
+        <textarea id="alamat3" name="alamat" rows="4" required></textarea>
+  
+        <button class="BuyNow" type="button" onclick="checkoutWhatsApp3()">Checkout via WhatsApp</button> 
+              
+        </div>
+        </div> 
+      <!--  form pembelian tape  -->
+
+        <!-- Form Pembelian Mix -->
+        <div id="popupBolenMix" class="bolenMix">
+          <!-- Konten Popup -->
+          <div class="Content-bolenMix">
+              <span class="closeBolenMix">&times;</span>
+              
+      <h2>Form Pembelian Produk</h2>
+      <form id="orderFormMix">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama4" name="nama" required>
+  
+        <label for="telepon">No Telepon:</label>
+        <input type="tel" id="telepon4" name="telepon" required>
+        <label for="namaBarang">Nama Barang:</label>
+        <input type="text" id="namaBarang4" name="namaBarang" value="Pisang Bolen Mix" readonly>
+  
+        <label for="jumlah">Jumlah Beli:</label>
+        <input type="number" id="jumlah4" name="jumlah" min="1" value="1" required oninput="hitungTotal4()">
+  
+        <label for="totalHarga">Total Harga (Rp 40.000 per item):</label>
+        <input type="text" id="totalHarga4" name="totalHarga" value="Rp 40.000" readonly>
+  
+        <label for="alamat">Alamat Lengkap:</label>
+        <textarea id="alamat4" name="alamat" rows="4" required></textarea>
+  
+        <button class="BuyNow" type="button" onclick="checkoutWhatsApp4()">Checkout via WhatsApp</button>
+         </div>
+        </div>  
+         <!-- End form pembelian mix  -->
+
+         <!-- Form Pembelian Coklat Keju -->
+        <div id="popupBolenCoklatKeju" class="bolenCoklatKeju">
+          <!-- Konten Popup -->
+          <div class="Content-bolenCoklatKeju">
+              <span class="closeBolenCoklatKeju">&times;</span>
+              
+      <h2>Form Pembelian Produk</h2>
+      <form id="orderFormCoklatKeju">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama5" name="nama" required>
+  
+        <label for="telepon">No Telepon:</label>
+        <input type="tel" id="telepon5" name="telepon" required>
+        <label for="namaBarang">Nama Barang:</label>
+        <input type="text" id="namaBarang5" name="namaBarang" value="Pisang Bolen Coklat Keju" readonly>
+  
+        <label for="jumlah">Jumlah Beli:</label>
+        <input type="number" id="jumlah5" name="jumlah" min="1" value="1" required oninput="hitungTotal5()">
+  
+        <label for="totalHarga">Total Harga (Rp 40.000 per item):</label>
+        <input type="text" id="totalHarga5" name="totalHarga" value="Rp 40.000" readonly>
+  
+        <label for="alamat">Alamat Lengkap:</label>
+        <textarea id="alamat5" name="alamat" rows="4" required></textarea>
+  
+        <button class="BuyNow" type="button" onclick="checkoutWhatsApp5()">Checkout via WhatsApp</button>
+          </div>
+        </div> 
+         <!-- End form pembelian coklatkeju  --> 
+        
+               <!-- Form Pembelian Roll Keju -->
+                 <div id="popupRollKeju" class="RollKeju">
+                  <!-- Konten Popup -->
+                  <div class="Content-RollKeju">
+                      <span class="closeRollKeju">&times;</span>
+                      
+              <h2>Form Pembelian Produk</h2>
+              <form id="orderFormRollKeju">
+                <label for="nama">Nama:</label>
+                <input type="text" id="nama6" name="nama" required>
+          
+                <label for="telepon">No Telepon:</label>
+                <input type="tel" id="telepon6" name="telepon" required>
+                <label for="namaBarang">Nama Barang:</label>
+                <input type="text" id="namaBarang6" name="namaBarang" value="Stick Roll Keju" readonly>
+          
+                <label for="jumlah">Jumlah Beli:</label>
+                <input type="number" id="jumlah6" name="jumlah" min="1" value="1" required oninput="hitungTotal6()">
+          
+                <label for="totalHarga">Total Harga (Rp 40.000 per item):</label>
+                <input type="text" id="totalHarga6" name="totalHarga" value="Rp 40.000" readonly>
+          
+                <label for="alamat">Alamat Lengkap:</label>
+                <textarea id="alamat6" name="alamat" rows="4" required></textarea>
+          
+                <button class="BuyNow" type="button" onclick="checkoutWhatsApp6()">Checkout via WhatsApp</button>
+                  </div>
+                </div> 
+                 <!-- End form pembelian Rollkeju  -->
+                
+                 <!-- Form Pembelian Roll Coklat -->
+                 <div id="popupRollCoklat" class="RollCoklat">
+                  <!-- Konten Popup -->
+                  <div class="Content-RollCoklat">
+                      <span class="closeRollCoklat">&times;</span>
+                      
+              <h2>Form Pembelian Produk</h2>
+              <form id="orderFormRollCoklat">
+                <label for="nama">Nama:</label>
+                <input type="text" id="nama7" name="nama" required>
+          
+                <label for="telepon">No Telepon:</label>
+                <input type="tel" id="telepon7" name="telepon" required>
+                <label for="namaBarang">Nama Barang:</label>
+                <input type="text" id="namaBarang7" name="namaBarang" value="Stick Roll Coklat" readonly>
+          
+                <label for="jumlah">Jumlah Beli:</label>
+                <input type="number" id="jumlah7" name="jumlah" min="1" value="1" required oninput="hitungTotal7()">
+          
+                <label for="totalHarga">Total Harga (Rp 40.000 per item):</label>
+                <input type="text" id="totalHarga7" name="totalHarga" value="Rp 40.000" readonly>
+          
+                <label for="alamat">Alamat Lengkap:</label>
+                <textarea id="alamat7" name="alamat" rows="4" required></textarea>
+          
+                <button class="BuyNow" type="button" onclick="checkoutWhatsApp7()">Checkout via WhatsApp</button>
+                  </div>
+                </div>   
+               <!-- End form pembelian Rollcoklat  -->
+
+                <!-- Form Pembelian Roll Coklat -->
+                 <div id="popupRollCoklat" class="RollCoklat">
+                  <!-- Konten Popup -->
+                  <div class="Content-RollCoklat">
+                      <span class="closeRollCoklat">&times;</span>
+                      
+              <h2>Form Pembelian Produk</h2>
+              <form id="orderFormRollCoklat">
+                <label for="nama">Nama:</label>
+                <input type="text" id="nama7" name="nama" required>
+          
+                <label for="telepon">No Telepon:</label>
+                <input type="tel" id="telepon7" name="telepon" required>
+                <label for="namaBarang">Nama Barang:</label>
+                <input type="text" id="namaBarang7" name="namaBarang" value="Stick Roll Coklat" readonly>
+          
+                <label for="jumlah">Jumlah Beli:</label>
+                <input type="number" id="jumlah7" name="jumlah" min="1" value="1" required oninput="hitungTotal7()">
+          
+                <label for="totalHarga">Total Harga (Rp 40.000 per item):</label>
+                <input type="text" id="totalHarga7" name="totalHarga" value="Rp 40.000" readonly>
+          
+                <label for="alamat">Alamat Lengkap:</label>
+                <textarea id="alamat7" name="alamat" rows="4" required></textarea>
+          
+                <button class="BuyNow" type="button" onclick="checkoutWhatsApp7()">Checkout via WhatsApp</button>
+                  </div>
+                </div> 
+              <!-- End form pembelian Rollcoklat  -->
+
+                 <!-- Form Pembelian Roll Coklat Keju -->
+                <div id="popupRollCoklatKeju" class="RollCoklatKeju">
+                 <!-- Konten Popup -->
+                 <div class="Content-RollCoklatKeju">
+                  <span class="closeRollCoklatKeju">&times;</span>
+                          
+                  <h2>Form Pembelian Produk</h2>
+                  <form id="orderFormRollCoklatKeju">
+                    <label for="nama">Nama:</label>
+                    <input type="text" id="nama8" name="nama" required>
+              
+                    <label for="telepon">No Telepon:</label>
+                    <input type="tel" id="telepon8" name="telepon" required>
+                    <label for="namaBarang">Nama Barang:</label>
+                    <input type="text" id="namaBarang8" name="namaBarang" value="Stick Roll Coklat-Keju" readonly>
+              
+                    <label for="jumlah">Jumlah Beli:</label>
+                    <input type="number" id="jumlah8" name="jumlah" min="1" value="1" required oninput="hitungTotal8()">
+              
+                    <label for="totalHarga">Total Harga (Rp 40.000 per item):</label>
+                    <input type="text" id="totalHarga8" name="totalHarga" value="Rp 40.000" readonly>
+              
+                    <label for="alamat">Alamat Lengkap:</label>
+                    <textarea id="alamat8" name="alamat" rows="4" required></textarea>
+              
+                    <button class="BuyNow" type="button" onclick="checkoutWhatsApp8()">Checkout via WhatsApp</button>
+                      </div>
+                    </div>           
+              
+                  <!-- End Elemen popUpBuyNow  -->
+             
+                </div>         
+                </div>
+                
+                <!-- mode malam  -->
+                <label class="switch">
+                  <input type="checkbox" id="toggleNightMode">       
+                  <span class="slider"></span>
+              </label>   
+
+    <!-- Logo search, logo kernajang dan menu hamburger  -->
+    <div class="navbar-extra">
+     <!-- logo search  -->
+       <!-- <a href="#" id="search-button"><i data-feather="search"></i></a>  -->
+      
+    <!-- logo keranjang  -->
+    
+      <button class="open-popup-btn" onclick="openPopup()"><i data-feather="shopping-cart"></i><span id="total-items">0</span></button>
+      
+
+    <!-- logo hamburger  -->
+      <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+      
+    </div>
+    <!-- End Logo search, logo kernajang dan menu hamburger  -->
+
+    
+    
+  </nav>
+  <!-- Navbar end -->
+  <!-- Teks berjalan -->
+<div class="marquee-container">
+  <div class="marquee" id="welcome">Selamat datang di toko online kami! Dapatkan diskon besar di berbagai produk hari ini!</div>
+</div>
+  
+<!-- Teks berjalan -->
+
+  <!-- Hero Section start -->
+  <section class="hero" id="home">
+           
+    <div class="mask-container">
+        
+      <main class="content"> 
+      
+        <p>“Produk Endah Bolen menjadi teman secangkir kopi dapat menjadi sebuah inspirasi, bahwa ia (Bolen) selalu hadir dalam segala moment tidak pernah berdusta atas nama rasa.
+</p><br>
+        <p> Produk Kami selalu punya cerita, bahwa bahagia itu sederhana yaitu cukup memberikan produk Kami kepada orang yang tersayang.”</p>
+        <button class="cta"><a href="#menu">Order Sekarang</a>
+        
+      </main>
+      
+    </div>
+  </section>
+  <!-- Hero Section end -->
+
+  <!-- About Section start -->
+  <section id="about" class="about">
+    <h2><span>Tentang</span> <span2>Kami</span2></h2>
+
+    <div class="row">
+      <div class="about-img">
+        <img src="Gambar/BannerBolen.jpg" alt="Tentang Kami">
+      </div>
+      <div class="content">
+        <h3>Sejarah Kami</h3>
+        <p>Endah Bolen didirikan pada 2011 oleh Bpk Yadih, asal mulanya beliau kerja di primasari Bandung yang memproduksi produk yang sama dan dia adalah orang yang di percaya untuk memegang resep.</p>
+        <p>Seiring berjalannya waktu perusahaan mengalami penurunan omset sehingga perusahaan mengalami gonjang-ganjing maka tak ayal banyak yang mengundurkan diri termasuk Bpk Yadih</p>
+        <p>Berbekal pengalaman memegang resep itulah beliau membuka toko sendiri atau usaha sendiri pada tahun 2011 yang diberi nama Endah Bolen</p>
+        <p>Endah bolen berasal dari nama istrinya dengan nama depan Endah, dan usaha ini masih berlanjut hingga sekarang, dengan lokasi Jl Kp. Candulan Bendungan polor 
+
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- About Section end -->
+
+  <!-- Menu Section start -->
+  <section id="menu" class="menu">
+    <h2><span>Menu</span> <span2>Order</span2></h2>
+    <p>Kami menyediakan berbagai macam varian jenis dan rasa selain itu juga kami menyidiakan Roll Stick Coklat, Roll Stick Keju atau campur
+    </p>
+    <div class="caraBelanja">
+    <p><a href="caraPembelian.html" target="_blank">Cara Belanja dan Pembayaran <i data-feather="external-link"></i></a></p>
+    </div>
+
+    <div class="row">
+      <div class="menu-card" data-title="pisang bolen coklat">
+        <img src="Gambar/BolenCoklat.jpg" alt="BolenCoklat" class="menu-card-img">
+        <h3 class="menu-card-title">- Pisang Bolen Coklat -</h3>
+        <p class="menu-card-price">IDR 40K/Box</p>
+
+        <div class="product-stars">
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+        </div>
+
+        <div class="button-container">
+          <button id="openBolenCoklat" class="cta2"><i data-feather="shopping-bag"></i> Buy Now</button>
+
+        <button onclick="addToCart('Pisang Bolen Coklat', 40000,'Gambar/BolenCoklat.jpg')" class="cta"><i data-feather="shopping-cart"></i> Add Cart</button> 
+        </div>
+
+        
+      </div>
+      <!-- notification  -->
+      <div id="cart-notification-coklat" class="cart-notification-coklat">
+        Barang berhasil ditambahkan ke keranjang!
+      </div>
+      <!-- End notifiation  -->
+      
+
+      <div class="menu-card">
+        <img src="Gambar/BolenKeju.jpg" alt="BolenKeju" class="menu-card-img">
+        <h3 class="menu-card-title">- Pisang Bolen Keju -</h3>
+        <p class="menu-card-price">IDR 40K/Box</p>
+
+        <div class="product-stars">
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+        </div>
+
+        <div class="button-container">
+          <button id="openBolenKeju" class="cta2"><i data-feather="shopping-bag"></i> Buy Now</button>
+
+
+        <button onclick="addToCart('Pisang Bolen Keju', 40000, 'Gambar/BolenKeju.jpg')" class="cta"><i data-feather="shopping-cart"></i> Add to Cart</button>
+        </div>
+
+      </div>
+      <div class="menu-card">
+        <img src="Gambar/BolenTape.png" alt="BolenTape" class="menu-card-img">
+        <h3 class="menu-card-title">- Bolen Tape -</h3>
+        <p class="menu-card-price">IDR 40K/Box</p>
+
+        <div class="product-stars">
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+        </div>
+
+        <div class="button-container">
+          <button id="openBolenTape" class="cta2"><i data-feather="shopping-bag"></i> Buy Now</button>
+
+        <button onclick="addToCart('Bolen Tape', 40000, 'Gambar/BolenTape.png')" class="cta"><i data-feather="shopping-cart"></i> Add to Cart</button>
+        </div>
+
+      </div>
+      <div class="menu-card">
+        <img src="Gambar/BolenCampur.jpg" alt="BolenMix" class="menu-card-img">
+        <h3 class="menu-card-title">- Pisang Bolen Mix -</h3>
+        <p class="menu-card-price">IDR 40K/Box</p>
+
+        <div class="product-stars">
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+        </div>
+
+        <button id="openBolenMix" class="cta2"><i data-feather="shopping-bag"></i> Buy Now</button>
+
+        <button onclick="addToCart('Pisang Bolen Mix', 40000, 'Gambar/BolenCampur.jpg')" class="cta"><i data-feather="shopping-cart"></i> Add to Cart</button>
+      
+
+      </div>
+      <div class="menu-card">
+        <img src="Gambar/BolenCoklat-Krju.jpg" alt="BolenCoklatKeju" class="menu-card-img">
+        <h3 class="menu-card-title">- Pisang Bolen Coklat-Keju </h3>
+        <p class="menu-card-price">IDR 40K/Box</p>
+
+        <div class="product-stars">
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+        </div>
+
+        <div class="button-container">
+          <button id="openBolenCoklatKeju" class="cta2"><i data-feather="shopping-bag"></i> Buy Now</button>
+
+        <button onclick="addToCart('Pisang Bolen Coklat-Keju', 40000,'Gambar/BolenCoklat-Krju.jpg')" class="cta"><i data-feather="shopping-cart"></i> Add to Cart</button>
+        </div>
+
+      </div>
+      <div class="menu-card">
+        <img src="Gambar/produkbolen.jpg" alt="Custom" class="menu-card-img">
+        <h3 class="menu-card-title">- Custom -</h3>
+        <p class="menu-card-price">IDR 40K/Box</p>
+
+        <div class="product-stars">
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star"></i>
+        </div>
+        <button class="cta" ><a href="BeliCustom.html" target="_blank">Beli Custom <i data-feather="external-link"></i></a></button>
+      </div>
+
+
+      
+      <div class="menu-card">
+        <img src="Gambar/RolKeju.jpg" alt="Espresso" class="menu-card-img">
+        <h3 class="menu-card-title">- Roll Keju -</h3>
+        <p class="menu-card-price">IDR 40K/Box</p>
+
+        <div class="product-stars">
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+        </div>
+
+        <div class="button-container">
+          <button id="openRollKeju" class="cta2"><i data-feather="shopping-bag"></i> Buy Now</button>
+
+        <button onclick="addToCart('Stick Roll Keju', 40000, 'Gambar/RolKeju.jpg')" class="cta"><i data-feather="shopping-cart"></i> Add to Cart</button> 
+        </div>
+
+      </div>
+      <div class="menu-card">
+        <img src="Gambar/RolCoklat.jpg" alt="Espresso" class="menu-card-img">
+        <h3 class="menu-card-title">- Roll Coklat -</h3>
+        <p class="menu-card-price">IDR 40K/Box</p>
+
+        <div class="product-stars">
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+        </div>
+        <div class="button-container">
+          <button id="openRollCoklat" class="cta2"><i data-feather="shopping-bag"></i> Buy Now</button>
+        
+
+        <button onclick="addToCart('Stick Roll Coklat', 40000, 'Gambar/RolCoklat.jpg')" class="cta"><i data-feather="shopping-cart"></i> Add to Cart</button>
+        </div>
+
+      </div>
+      <div class="menu-card">
+        <img src="Gambar/RolCoklat.jpg" alt="Espresso" class="menu-card-img">
+        <h3 class="menu-card-title">- Roll Coklat-Keju -</h3>
+        <p class="menu-card-price">IDR 40K/Box</p>
+
+        <div class="product-stars">
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+          <i data-feather="star" class="star-full"></i>
+        </div>
+        
+        <div class="button-container">
+          <button id="openRollCoklatKeju" class="cta2"><i data-feather="shopping-bag"></i> Buy Now</button>
+
+        <button onclick="addToCart('Stick Roll Coklat-Keju', 40000, 'Gambar/RolCoklat.jpg')" class="cta"><i data-feather="shopping-cart"></i> Add to Cart</button>
+        </div>
+
+      </div>
+      
+    </div>
+    <div class="catatan">
+    <p>Catatan :</p>
+    <p>Hanya ada bila ada pesanan saja, Untuk pemesanan Roll Stick sebaiknya dilakukan sehari sebelumnya atau pesan dulu sebelum membelinya</p>
+   
+    </div>
+  </section>
+  <!-- Menu Section end -->
+
+  <!-- Products Section start -->
+  <section class="products" id="products">
+    <h2><span>Produk Unggulan</span> <span3>Kami</span3></h2>
+    <p>Kami juga mempunya produk unggulan yang paling banyak diminati oleh para penggemar kue dan Roti seluruh seantero dunia.</p>
+    
+
+    <div class="row">
+      <div class="product-card">
+        <!-- <div class="product-icons">
+          <a href="#"><i data-feather="shopping-cart"></i></a>
+          <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+        </div> -->
+        <div class="product-image">
+          <img src="Gambar/BolenCoklat.jpg" alt="BolenCoklat">
+        </div>
+        <div class="product-content">
+          <h3>Pisang Bolen Coklat</h3>
+          <div class="product-stars">
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star"></i>
+          </div>
+          <div class="product-price">IDR 40K <span>IDR 50K</span></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <!-- <div class="product-icons">
+          <a href="#"><i data-feather="shopping-cart"></i></a>
+          <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+        </div> -->
+        <div class="product-image">
+          <img src="Gambar/BolenCoklat-Krju.jpg" alt="BolenCoklatKeju">
+        </div>
+        <div class="product-content">
+          <h3>Pisang Bolen Coklat & Keju</h3>
+          <div class="product-stars">
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star" class="star-full"></i>
+          </div>
+          <div class="product-price">IDR 40K <span>IDR 50K</span></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <!-- <div class="product-icons">
+          <a href="#"><i data-feather="shopping-cart"></i></a>
+          <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+        </div> -->
+        <div class="product-image">
+          <img src="Gambar/BolenCampur.jpg" alt="BolenCampur">
+        </div>
+        <div class="product-content">
+          <h3>Pisang Bolen Mix</h3>
+          <div class="product-stars">
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star" class="star-full"></i>
+          </div>
+          <div class="product-price">IDR 40K <span>IDR 50K</span></div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <!-- <div class="product-icons">
+          <a href="#"><i data-feather="shopping-cart"></i></a>
+          <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+        </div> -->
+        <div class="product-image">
+          <img src="Gambar/BolenKeju.jpg" alt="BolenKeju">
+        </div>
+        <div class="product-content">
+          <h3>Pisang Bolen Keju</h3>
+          <div class="product-stars">
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+          </div>
+          <div class="product-price">IDR 40K <span>IDR 50K</span></div>
+        </div>
+      </div>
+      <!-- <div class="product-card">
+        <div class="product-icons">
+          <a href="#"><i data-feather="shopping-cart"></i></a>
+          <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+        </div>
+        <div class="product-image">
+          <img src="Gambar/produk1.jpg" alt="Product 1">
+        </div>
+        <div class="product-content">
+          <h3>Coffee Beans 1</h3>
+          <div class="product-stars">
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+          </div>
+          <div class="product-price">IDR 30K <span>IDR 55K</span></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icons">
+          <a href="#"><i data-feather="shopping-cart"></i></a>
+          <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+        </div>
+        <div class="product-image">
+          <img src="Gambar/produk1.jpg" alt="Product 1">
+        </div>
+        <div class="product-content">
+          <h3>Coffee Beans 1</h3>
+          <div class="product-stars">
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+          </div>
+          <div class="product-price">IDR 30K <span>IDR 55K</span></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icons">
+          <a href="#"><i data-feather="shopping-cart"></i></a>
+          <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+        </div>
+        <div class="product-image">
+          <img src="Gambar/produk1.jpg" alt="Product 1">
+        </div>
+        <div class="product-content">
+          <h3>Coffee Beans 1</h3>
+          <div class="product-stars">
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+          </div>
+          <div class="product-price">IDR 30K <span>IDR 55K</span></div>
+        </div> -->
+      </div>
+    </div>
+  </section>
+  <!-- Products Section end -->
+
+  <!-- Testimonials -->
+
+  <section class="testimonial" id="testimonial">
+    <h2><span>Testimonial</span> <span4>Customer</span4></h2>
+    <!--Testimonial Section code-->
+<section class="testimonial" id="testimonial">
+  <div class="testimonial-box">
+      
+      <div class="wrapper">
+          <div class="testimonial-item">
+               <img src="Gambar/achan.jpg" alt="">
+               <h2>Nurhasan</h2>
+               <div class="rating">
+                  <i class="bx bxs-star" id="star"></i>
+                  <i class="bx bxs-star" id="star"></i>
+                  <i class="bx bxs-star" id="star"></i>
+                  <i class="bx bxs-star" id="star"></i>
+                  <i class="bx bxs-star" id="star"></i>
+               </div>                
+               <p>Produknya unik cuma ada di tangerang Petir jadi kalo mao makan bolen gak usah jauh-jauh ke Bandung di dekat kita juga ada dijamin rasanya gak jauh berbeda dengan bolen Bandung </p>
+          </div>
+
+          <div class="testimonial-item">
+              <img src="Gambar/yetty.jpg" alt="">
+              <h2>Yety Rosita</h2>
+              <div class="rating">
+                 <i class="bx bxs-star" id="star"></i>
+                 <i class="bx bxs-star" id="star"></i>
+                 <i class="bx bxs-star" id="star"></i>
+                 <i class="bx bxs-star" id="star"></i>
+                 <i class="bx bxs-star" id="star"></i>
+              </div>
+              <p>Bolennya enak banget gurih renyah saya sudah berlangganan lebih dari 5 tahun untuk dijual kembali dan Alhamdililah pelanggan saya puas, saya kasih bintang 5 ya pak yadih</p>
+         </div>
+
+         <div class="testimonial-item">
+          <img src="Gambar/Dahlia.jpg" alt="">
+          <h2>Dahlia</h2>
+          <div class="rating">
+             <i class="bx bxs-star" id="star"></i>
+             <i class="bx bxs-star" id="star"></i>
+             <i class="bx bxs-star" id="star"></i>
+             <i class="bx bxs-star" id="star"></i>
+             <i class="bx bxs-star" id="star"></i>
+          </div>
+          <p>Makasih mpo endah di kasih jadi pelanggan setia endah bolen, Alhamduliah bolennya laris manis banyak yang suka dengan bolen ini jadi lebih banyak cuan, hehe.</p>
+     </div>
+     <div class="testimonial-item">
+      <img src="Gambar/sifah.jpg" alt="">
+      <h2>Dahlia</h2>
+      <div class="rating">
+         <i class="bx bxs-star" id="star"></i>
+         <i class="bx bxs-star" id="star"></i>
+         <i class="bx bxs-star" id="star"></i>
+         <i class="bx bxs-star" id="star"></i>
+         <i class="bx bxs-star" id="star"></i>
+      </div>
+      <p>Mpo Endah alhamdulilah laris manis bolennya banyak yang nyariin katanya belinya dimana bolennyaya enak, gurih apalagi makannya anget-anget sama kopi pahit</p>
+ </div>
+ <div class="testimonial-item">
+  <img src="Gambar/Farid.jpg" alt="">
+  <h2>Farid Muhamad</h2>
+  <div class="rating">
+     <i class="bx bxs-star" id="star"></i>
+     <i class="bx bxs-star" id="star"></i>
+     <i class="bx bxs-star" id="star"></i>
+     <i class="bx bxs-star" id="star"></i>
+     <i class="bx bxs-star" id="star"></i>
+  </div>
+  <p>Bolennya mantap bosku, enak banget buat ngopi apalagi baru mateng rasanya renyah dan gurih kamaren bang achan bawain tuh waktu kita pergi ke Dieng cocok buat santai rekreasi disaat buat ganjel perut abis rasanya bikin kenyang hehe..</p>
+</div>
+<div class="testimonial-item">
+  <img src="Gambar/ika.jpg" alt="">
+  <h2>Ika Mustika</h2>
+  <div class="rating">
+     <i class="bx bxs-star" id="star"></i>
+     <i class="bx bxs-star" id="star"></i>
+     <i class="bx bxs-star" id="star"></i>
+     <i class="bx bxs-star" id="star"></i>
+     <i class="bx bxs-star" id="star"></i>
+  </div>
+  <p>tau bolen ini dari bang achan waktu ntuh dia bawa bolen buat acara reonian temen smp terus saya cobain rasanya enak karena emang gak ada lagi produk seperti ini selain di candulan apalagi kalo gratisan hehehe...</p>
+</div>
+
+
+  </div>
+  </div>
+</section>
+  
+  <!-- Contact Section start -->
+  <section id="contact" class="contact">
+    <h2><span>Kontak</span> <span4>Kami</span4></h2>
+    <p>Endah Bolen Bandung</p>
+     <p>Jl. Kp. Candulan, RT.1/RW.007, Petir</p>
+     <p>Tangerang, Banten 15147</p>
+     <p>Tlp.087878579168</p>
+
+    <div class="row">
+      <!-- Peta map -->
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3393.2708166566667!2d106.71396717423258!3d-6.189164660637006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f9be4f1a2e7f%3A0x7274d0a36e44bbd1!2sEndah%20Bolen%20Bandung!5e1!3m2!1sid!2sid!4v1723970195128!5m2!1sid!2sid" width="450" height="490" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+      <!-- Peta map End  -->
+      <div class="container">
+        
+        <form action="">
+          <div>
+            <span>
+              <label for="name">Name</label><br/>
+              <input id="name" type="text" placeholder="Full Name">
+            </span>
+            <span>
+              <label for="email">Email</label></br>
+              <input id="email" type="email" placeholder="Email">
+            </span>
+          </div>
+          <label for="message">Your Message</label><br/>
+          <textarea name="" id="message" rows="10" placeholder="Your Message"></textarea>
+          <button onclick="sendToWhatsapp()" class="contact">Submit</button>
+        </form>
+      </div>
+
+      
+    </div>
+  </section>
+  <!-- Contact Section end -->
+
+  <!-- Footer start -->
+  <footer>
+    <div class="socials">
+      <a href="#"><i data-feather="instagram"></i></a>
+      <a href="#"><i data-feather="twitter"></i></a>
+      <a href="#"><i data-feather="facebook"></i></a>
+    </div>
+
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#about">Tentang Kami</a>
+      <a href="#menu">Menu Order</a>
+      <a href="#products">Produk</a>
+      <a href="#contact">Kontak</a>
+    </div>
+
+    <div class="credit">
+      <p>Created by <a href="">Nurhasan</a>. | &copy; 2024.</p>
+    </div>
+  </footer>
+  <!-- Footer end -->
+
+  <!-- Modal Box Item Detail start -->
+  <!-- <div class="modal" id="item-detail-modal">
+    <div class="modal-container">
+      <a href="#" class="close-icon"><i data-feather="x"></i></a>
+      <div class="modal-content">
+        <img src="Gambar/kopiPasarRubuh.jpg" alt="Product 1">
+        <div class="product-content">
+          <h3>Kopi Pasar Rubuh</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident, tenetur cupiditate facilis obcaecati
+            ullam maiores minima quos perspiciatis similique itaque, esse rerum eius repellendus voluptatibus!</p>
+          <div class="product-stars">
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star" class="star-full"></i>
+            <i data-feather="star"></i>
+          </div>
+          <div class="product-price">IDR 30K <span>IDR 55K</span></div>
+          <a href="#"><i data-feather="shopping-cart"></i> <span>add to cart</span></a>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- Modal Box Item Detail end -->
+
+  <!-- Navbar di bagian bawah -->
+  <div class="navbarPhone">
+        
+    <a href="#home" class="active">
+        <div class="navbarPhone-icon">
+            <i class="bx bxs-home"></i>
+        </div>
+        <p>Beranda</p>
+    </a>
+    
+    <a href="#about">           
+        <div class="navbarPhone-icon">
+            <i class="bx bxs-user-detail"></i>
+            <div class="badge"></div>
+        </div>
+        <p>About</p>
+    </a>
+    
+    <a href="#menu">         
+        <div class="navbarPhone-icon">
+            <i class="bx bxs-store"></i>
+            <div class="badge"></div>
+        </div>
+        <p>Order</p> 
+    </a>
+    
+    <a href="#products">
+        <div class="navbarPhone-icon">
+            <i class="bx bx-restaurant"></i>
+            <div class="badge"></div>
+        </div>
+        <p>Produk</p>
+    </a>
+    
+            <a href="#testimonial">            
+        <div class="navbarPhone-icon">
+            <i class="bx bx-message-alt-dots"></i>
+        </div>
+                <p>Testimoni</p>
+    </a>
+    
+    <a href="#contact">            
+        <div class="navbarPhone-icon">
+            <i class="bx bx-envelope"></i>
+        </div>
+        <p>Kontak</p>
+    </a>
+    
+</div>
+
+  <!-- Tombol Scroll Mengambang -->
+  <div class="scroll-buttons" id="scrollButtons">
+    <button id="scrollTop"><i class="bx bx-arrow-to-top"></i></button>
+    <button id="scrollUp"> <i class="bx bx-chevron-up"></i></button>
+    <button id="scrollDown"><i class="bx bx-chevron-down"></i></button>
+    <button id="scrollBottom"><i class="bx bx-arrow-to-bottom"></i></button>
+</div>
+
+ 
+
+<!-- Tombol WhatsApp Mengambang -->
+<a href="https://wa.me/6287878579168" class="whatsapp-float" onclick="removeNotif()" target="_blank"><i class="fab fa-whatsapp"></i><span class="notif" id="notif">1</span></a>
+
+<div class="hubungi-kami">
+  Hubungi Kami
+</div>
+
+<!-- Halaman selamat datang  -->
+
+    <!-- Popup Overlay -->
+    <div class="popup-overlay-iklan" id="popupIklan">
+      <div class="popup-content-iklan">
+        <p class="head-iklan">SELAMAT DATANG DI ENDAH BOLEN</p>
+        <img src="Gambar/BannerBolen.jpg" alt="Gambar Popup" />
+        <div class="close-btn-iklan" onclick="closePopupIklan()">X
+      </div>
+    </div>
+    <!-- Popup Overlay -->
+
+  <script>
+    feather.replace()
+  </script>
+  <!-- End Feather Icons -->
+
+  <!-- My Javascript -->
+  <script src="script.js"></script>
+  <script src="testimonial.js"></script>
+  <script src="pesan.js"></script>
+  <script src="custom.js"></script>
+
+  <!-- End My Javascript -->
+
+
+  <!--   *****   JQuery Link   *****   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+<!--   *****   Owl Carousel js Link  *****  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<!--   *****   Link To Custom Script File   *****   -->
+<script type="text/javascript" src="script.js"></script>
+
+</body>
+
+</html>

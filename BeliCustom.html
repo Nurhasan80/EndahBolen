@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:.ENDAH BOLEN.: Form Pembelian Custom</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h2 {
+           text-align: center; 
+           margin-top: 5px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: white;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 5px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 90%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 90%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .total {
+            text-align: right;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+        }
+
+        .remove-btn {
+            background-color: red;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .custom, .alamat {
+            width: 90%;
+        }
+        
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Form Pembelian Custom</h2>
+
+    <!-- Form Input Barang -->
+    <div class="form-group">
+        
+        <textarea type="text" class="custom" id="product-name" rows="5" placeholder="Masukkan nama barang cutom, misal saya pesan 1 Box pisang bolen keju yang isinya 6 coklat 2 tape dan 2 keju"></textarea>
+    </div>
+
+    <div class="form-group">
+       
+        <input type="number" id="product-price" placeholder="Masukkan harga barang" value="40000" readonly>
+    </div>
+
+    <div class="form-group">
+       
+        <input type="number" id="product-quantity" placeholder="Masukkan jumlah beli">
+    </div>
+
+    <button onclick="addItem()">Tambah ke Tabel</button>
+
+    <!-- Tabel Barang -->
+    <table id="product-table">
+        <thead>
+            <tr>
+                <th>Nama Barang</th>
+                <th>Harga</th>
+                <th>Jumlah</th>
+                <th>Total</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <tr>
+                <td colspan="5" style="text-align: center;">Belum ada data</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Form Input Pembeli -->
+    <h2>Form Pembeli</h2>
+
+    <div class="form-group">
+        <label for="buyer-name">Nama Pembeli</label>
+        <input type="text" id="buyer-name" placeholder="Masukkan nama pembeli" oninput="validateForm()">
+    </div>
+
+    <div class="form-group">
+        <label for="buyer-phone">Nomor Telepon</label>
+        <input type="text" id="buyer-phone" placeholder="Masukkan nomor telepon" oninput="validateForm()">
+    </div>
+
+    <div class="form-group">
+        <label for="buyer-address">Alamat Lengkap</label>
+        <textarea type="text" class="alamat" rows="5" id="buyer-address" placeholder="Masukkan alamat lengkap" oninput="validateForm()"></textarea>
+    </div>
+
+    <!-- Tombol Checkout -->
+    <button id="checkout-btn" onclick="checkout()" disabled>Kirim ke WhatsApp</button>
+</div>
+
+<script>
+    let cart = [];
+
+    function addItem() {
+        const productName = document.getElementById('product-name').value;
+        const productPrice = document.getElementById('product-price').value;
+        const productQuantity = document.getElementById('product-quantity').value;
+
+        if (productName === '' || productPrice === '' || productQuantity === '') {
+            alert('Mohon lengkapi semua data barang.');
+            return;
+        }
+
+        const total = productPrice * productQuantity;
+        cart.push({ name: productName, price: productPrice, quantity: productQuantity, total: total });
+
+        updateTable();
+        clearProductForm();
+        validateForm();
+    }
+
+    function updateTable() {
+        const tableBody = document.getElementById('table-body');
+        tableBody.innerHTML = '';
+
+        cart.forEach((item, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.name}</td>
+                <td>Rp ${parseInt(item.price).toLocaleString()}</td>
+                <td>${item.quantity}</td>
+                <td>Rp ${parseInt(item.total).toLocaleString()}</td>
+                <td><button class="remove-btn" onclick="removeItem(${index})">Hapus</button></td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+
+    function clearProductForm() {
+        document.getElementById('product-name').value = '';
+       
+        document.getElementById('product-quantity').value = '';
+    }
+
+    function removeItem(index) {
+        cart.splice(index, 1);
+        updateTable();
+        validateForm();
+    }
+
+    function validateForm() {
+        const buyerName = document.getElementById('buyer-name').value;
+        const buyerPhone = document.getElementById('buyer-phone').value;
+        const buyerAddress = document.getElementById('buyer-address').value;
+        const checkoutBtn = document.getElementById('checkout-btn');
+
+        if (buyerName && buyerPhone && buyerAddress && cart.length > 0) {
+            checkoutBtn.disabled = false;
+        } else {
+            checkoutBtn.disabled = true;
+        }
+    }
+
+    function checkout() {
+        const buyerName = document.getElementById('buyer-name').value;
+        const buyerPhone = document.getElementById('buyer-phone').value;
+        const buyerAddress = document.getElementById('buyer-address').value;
+
+        let message = `Halo, saya ingin memesan barang berikut:\n\n`;
+        cart.forEach(item => {
+            message += `Nama Barang: ${item.name}\nJumlah: ${item.quantity}\nTotal: Rp ${parseInt(item.total).toLocaleString()}\n\n`;
+        });
+
+        const totalPrice = cart.reduce((total, item) => total + item.total, 0);
+        message += `Total Keseluruhan: Rp ${parseInt(totalPrice).toLocaleString()}\n\n`;
+        message += `Nama Pembeli: ${buyerName}\nNomor Telepon: ${buyerPhone}\nAlamat: ${buyerAddress}`;
+
+        const whatsappUrl = `https://wa.me/6287781935781?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+
+        // Reset form dan tabel setelah checkout
+        cart = [];
+        updateTable();
+        clearProductForm();
+        document.getElementById('buyer-name').value = '';
+        document.getElementById('buyer-phone').value = '';
+        document.getElementById('buyer-address').value = '';
+        validateForm();
+    }
+</script>
+
+</body>
+</html>
